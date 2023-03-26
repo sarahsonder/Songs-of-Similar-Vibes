@@ -1,0 +1,79 @@
+\documentclass[fontsize=11pt]{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.00 in]{geometry}
+\usepackage{hanging}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+
+
+\title{CSC111 Project Proposal: Songs of Similar Vibez}
+\author{Sarah Wang, Vivian White, Rebecca Kong}
+\date{Wednesday, March 8, 2023}
+
+\begin{document}
+\maketitle
+
+\section*{Problem Description and Research Question}
+
+Have you ever listened to a song and wondered, “How can I find a song similar to this one?”. If yes, you have come to the right place, because this is exactly the problem we want to tackle. Thus, our project question is: \textbf{Based on one song, how can we generate a playlist of similar songs?} \newline
+
+\noindent When determining what makes a song similar to another, you might focus on the melody, lyrics, or “vibe” of the song. We want to quantify these attributes by using variables such as loudness and danceability. Then, based on the song imputed by the user, we will calculate the similarity between the imputed song and the other songs in our dataset. After calculating the similarities, we will output a list of songs with high degrees of similarity to the original input song.\newline
+
+\noindent Our motivation for doing this project is that we love listening to music and want to discover new songs that suit our tastes. Although we have used other song recommenders in the past, they did not always yield satisfactory results, so we wanted to build a better recommender! We all have experience playing musical instruments and we want to use our experience to create a song recommender that not only focuses on the quantifiable attributes but also accurately identifies songs of similar vibes.
+
+
+\section*{Computational Plan}
+We will create a  \_Song class to represent songs which contain many attributes which will be used to compare them against each other and are representative of the song characteristics. These attributes include duration, energy, volume, tempo etc. They will also contain a unique id to differentiate them from each other, and the attribute neighbors,  which is a dict of a tuple of two \_Songs mapping to the similarity value between self and the key (a float). \newline
+
+\noindent There will also be a Playlist class to represent a graph of songs, ranking them by similarity. It is initialized using one specific \_Song which is stored as a central node attribute and all \_Songs taken from the dataset will be compared against it before being compared against its neighbors etc. It will contain the attribute songs, which is a set of \_Songs (acting as a list of vertices). Edges will be stored in the \_Song class as neighbors. Playlists will also contain an attribute max\_similarity\_difference (a float with a default value) which will be compared against similarity values in songs to determine whether \_Songs should be connected or not. Playlists will also have an attribute path\_length to determine the maximum path length from the central node (thus roughly determining the size of the graph). This is because we will make direct neighbors (adjacent nodes) of the songs to have the highest similarity levels, whereas nodes that are connected by a path, but not directly neighbors have lower similarity levels. We will let the customer experiment/decide the path length. \newline 
+
+\noindent One of the main computations that will be performed is calculating the similarity value between \_Songs. We will create an algorithm which takes in the characteristics of a song as parameters and weights then manipulates them to get one generalized similarity value. 
+We will also use a top-level function to take the generated Playlist, process the information, and convert it to a functional Spotify playlist.
+We will then also need a Playlist method to process a CSV file and incorporate all the provided information in one \_Song per line, and then a \_Song initializer which takes a line of information from said file.\newline
+
+\noindent We will use the library NetworkX, along with Plotly to visualize the graphs. With NetworkX, since nodes can be anything, including text and images, the nodes will be the songs themselves, along with the artists. Then, because each edge can hold arbitrary data, such as weighted data, this means that the edges can be prioritized over each other and therefore they can be ranked in order of priority to list the most similar songs first.  This graph is generated after the computations that determine the degree of  similarities between songs. 
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=18cm]{Screenshot 2023-03-07 at 9.40.49 PM.png}
+    \label{fig:galaxy}
+\end{figure}
+\noindent The image above is a sample from the dataset that we will be using. This data comes from Spotify, and it includes variables like the track id, artist, danceability, loudness, and other variables that we plan to use to compute the similarities between songs. 
+
+\newpage
+\begin{center}
+    Work Cited 
+\end{center}
+
+\begin{hangparas}{0.25in}{1}
+Tom Mock. spotify\_songs.csv. \textit{tidytuesday}, commit 0880eb1f0ce5cbf229bead72c4e17dd19cfd1eb3, rfordatascience, 2020. GitHub, https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-01-21/spotify\_songs.csv.
+\\
+
+
+“Get Track's Audio Features.” \textit{Spotify for Developers}, https://developer.spotify.com/documentation/web-api/reference
+/\#/operations/get-audio-features.
+ \\
+
+
+\textit{NetworkX - Network Analysis in Python}. NetworkX developers, 2014, https://networkx.org/.
+\\
+
+“Network Graphs in Python.” \textit{Plotly Open Source Graphing Libraries}, https://plotly.com/python/network-graphs/.
+\\
+
+
+\textit{Spotipy!} Paul Lamere, 2014, https://spotipy.readthedocs.io/en/2.22.1/
+
+
+\end{hangparas}
+
+
+
+% NOTE: LaTeX does have a built-in way of generating references automatically,
+% but it's a bit tricky to use so we STRONGLY recommend writing your references
+% manually, using a standard academic format like APA or MLA.
+% (E.g., https://owl.purdue.edu/owl/research_and_citation/apa_style/apa_formatting_and_style_guide/general_format.html)
+
+\end{document}

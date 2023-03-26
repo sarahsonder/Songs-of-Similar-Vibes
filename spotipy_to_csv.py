@@ -9,7 +9,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="d77034c798
 
 
 def get_songs_from_pl(pl_id: str) -> list[str]:
-    """Returns a list containing the song IDs from a given playlist. pl_id is a playlist URI.
+    """Takes in a playlist URI (pl_id), returns a list containing the song IDs from a given playlist.
 
     >>> song_list = get_songs_from_pl('spotify:playlist:3c3ORzOlXdL2pQPv7MtuS5')
     >>> len(song_list)
@@ -26,9 +26,22 @@ def get_songs_from_pl(pl_id: str) -> list[str]:
     return song_lst
 
 
-def song_features(pl_id: str) -> list[dict[str, Any]]:
+def get_songs_from_playlists(pl_ids: list[str]) -> list[str]:
+    """Does the same thing as get_songs_from_pl except with several playlists"""
+    all_songs = []
+
+    for playlist in pl_ids:
+        one_playlist = get_songs_from_pl(playlist)
+        all_songs.extend(one_playlist)
+
+    return all_songs
+
+# TO CREATE A CSV FILE, YOU ONLY NEED TO USE THE TWO FUNCTIONS BELOW
+
+
+def song_features(pl_ids: list[str]) -> list[dict[str, Any]]:
     """Returns the list of dictionaries that will be used to write the CSV file"""
-    song_lst = get_songs_from_pl(pl_id)
+    song_lst = get_songs_from_playlists(pl_ids)
     all_song_features = []
 
     for song in song_lst:  # Song is a Spotify URI
@@ -38,9 +51,8 @@ def song_features(pl_id: str) -> list[dict[str, Any]]:
         song_feature['track_artist'] = track_info['artists'][0]['name']
 
         song_feature['track_id'] = song_feature.pop('id')
-        song_feature.pop('uri')
-        song_feature.pop('track_href')
-        song_feature.pop('analysis_url')
+        for feature in ['uri', 'track_href', 'analysis_url', 'liveness', 'type', 'key']:
+            song_feature.pop(feature)
 
         all_song_features.append(song_feature)
 
@@ -48,8 +60,8 @@ def song_features(pl_id: str) -> list[dict[str, Any]]:
 
 
 def write_csv(features: list[dict[str, Any]]) -> None:
-    """Created a new csv with the all song features"""
-    with open('new_songs.csv', mode='w') as csvfile:
+    """Creat a new csv with the all song features"""
+    with open('hi_songs.csv', mode='w') as csvfile:
         fieldnames = features[0].keys()
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames, lineterminator='\n')
         writer.writeheader()

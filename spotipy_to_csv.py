@@ -36,6 +36,8 @@ def get_songs_from_playlists(pl_ids: list[str]) -> list[str]:
 
     return all_songs
 
+# TO CREATE A CSV FILE, YOU ONLY NEED TO USE THE TWO FUNCTIONS BELOW
+
 
 def get_single_track_features(track_id: str) -> dict[str, Any]:
     """Return the track features for ONE song."""
@@ -62,13 +64,11 @@ def get_many_track_features(track_ids: list[str]) -> list[dict[str, Any]]:
     return all_track_features
 
 
-# TO CREATE A CSV FILE, YOU ONLY NEED TO USE THE TWO FUNCTIONS BELOW
-
-
 def song_features(pl_ids: list[str]) -> list[dict[str, Any]]:
     """Returns the list of dictionaries that will be used to write the CSV file"""
     track_ids = get_songs_from_playlists(pl_ids)
     return get_many_track_features(track_ids)
+    # song_lst = get_songs_from_playlists(pl_ids)
     # all_song_features = []
     #
     # for song in song_lst:  # Song is a Spotify URI
@@ -87,12 +87,56 @@ def song_features(pl_ids: list[str]) -> list[dict[str, Any]]:
 
 
 def write_csv(features: list[dict[str, Any]]) -> None:
-    """Creat a new csv with the all song features"""
+    """Create a new csv with the all song features"""
     with open('hi_songs.csv', mode='w') as csvfile:
         fieldnames = features[0].keys()
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames, lineterminator='\n')
         writer.writeheader()
         writer.writerows(features)
+
+
+def similarity_score(track_id: str, other_song_id: list[str], playlist: bool = True) -> dict[str, float]:
+    """Calculates the similarity score between songs"""
+    # string = ''
+    target = get_single_track_features(track_id)
+    if playlist:
+        other_songs = song_features(other_song_id)
+    else:
+        other_songs = get_many_track_features(other_song_id)
+
+    all_song_similarities = {}
+    for song in other_songs:
+        danceability = 1 - abs(target['danceability'] - song['danceability'])
+        energy = 1 - abs(target['energy'] - song['energy'])
+        loudness = 1 - (abs(target['loudness'] - song['loudness']) / 60)
+        if target['mode'] == song['mode']:
+            mode = 0.5
+        else:
+            mode = 0.0
+        speechiness = 1 - abs(target['speechiness'] - song['speechiness'])
+        accousicness = 1 - abs(target['acousticness'] - song['acousticness'])
+        instramentalness = 1 - abs(target['instrumentalness'] - song['instrumentalness'])
+        valence = 1 - abs(target['valence'] - song['valence'])
+        tempo = 1 - (abs(target['tempo'] - song['tempo']) / 218)
+        if target['duration_ms'] - 60 <= song['duration_ms'] <= target['duration_ms'] + 60:
+            duration = 0.3
+        else:
+            duration = 0.0
+        if target['time_signature'] == song['time_signature']:
+            time_signature = 0.2
+        else:
+            time_signature = 0.0
+
+
+        score = ((danceability + energy + loudness + mode + speechiness + accousicness +
+                 instramentalness + valence + tempo + duration + time_signature) / 9) * 100
+
+        all_song_similarities[song['track_name']] = score
+
+    return all_song_similarities
+
+string = f' Danceability: {danceability}, Energy: {energy}, Loudness: {}'
+return string
 
 
 if __name__ == '__main__':

@@ -36,27 +36,54 @@ def get_songs_from_playlists(pl_ids: list[str]) -> list[str]:
 
     return all_songs
 
+
+def get_single_track_features(track_id: str) -> dict[str, Any]:
+    """Return the track features for ONE song."""
+    track_info = sp.track(track_id, market=None)
+    track_features = sp.audio_features([track_id])[0]  # returns list[dict[str, Any]
+
+    track_features['track_name'] = track_info['name']
+    track_features['track_artist'] = track_info['artists'][0]['name']
+    track_features['track_id'] = track_features.pop('id')
+    for feature in ['uri', 'track_href', 'analysis_url', 'liveness', 'type', 'key']:
+        track_features.pop(feature)
+
+    return track_features
+
+
+def get_many_track_features(track_ids: list[str]) -> list[dict[str, Any]]:
+    """Return the track features for SEVERAL songs."""
+    all_track_features = []
+
+    for track in track_ids:
+        single_track_feature = get_single_track_features(track)
+        all_track_features.append(single_track_feature)
+
+    return all_track_features
+
+
 # TO CREATE A CSV FILE, YOU ONLY NEED TO USE THE TWO FUNCTIONS BELOW
 
 
 def song_features(pl_ids: list[str]) -> list[dict[str, Any]]:
     """Returns the list of dictionaries that will be used to write the CSV file"""
-    song_lst = get_songs_from_playlists(pl_ids)
-    all_song_features = []
-
-    for song in song_lst:  # Song is a Spotify URI
-        track_info = sp.track(song, market=None)
-        song_feature = sp.audio_features([song])[0]  # returns list[dict[str, Any]
-        song_feature['track_name'] = track_info['name']
-        song_feature['track_artist'] = track_info['artists'][0]['name']
-
-        song_feature['track_id'] = song_feature.pop('id')
-        for feature in ['uri', 'track_href', 'analysis_url', 'liveness', 'type', 'key']:
-            song_feature.pop(feature)
-
-        all_song_features.append(song_feature)
-
-    return all_song_features
+    track_ids = get_songs_from_playlists(pl_ids)
+    return get_many_track_features(track_ids)
+    # all_song_features = []
+    #
+    # for song in song_lst:  # Song is a Spotify URI
+    #     track_info = sp.track(song, market=None)
+    #     song_feature = sp.audio_features([song])[0]  # returns list[dict[str, Any]
+    #     song_feature['track_name'] = track_info['name']
+    #     song_feature['track_artist'] = track_info['artists'][0]['name']
+    #
+    #     song_feature['track_id'] = song_feature.pop('id')
+    #     for feature in ['uri', 'track_href', 'analysis_url', 'liveness', 'type', 'key']:
+    #         song_feature.pop(feature)
+    #
+    #     all_song_features.append(song_feature)
+    #
+    # return all_song_features
 
 
 def write_csv(features: list[dict[str, Any]]) -> None:

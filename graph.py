@@ -4,8 +4,10 @@ from __future__ import annotations
 from typing import Any
 
 import networkx as nx
-import matplotlib.pyplot as plt
-from spotipy_to_csv import similarity_score1, get_songs_from_playlists, get_single_track_features, song_features
+from pyvis.network import Network
+
+
+from spotify_to_csv import get_songs_from_playlists, get_tracks_features
 from track import Track, SIMILARITY_VALUE
 
 FEATURES = {'danceability', 'energy', 'loudness', 'mode', 'speechiness', 'acousticness', 'instrumentalness', 'valence',
@@ -49,39 +51,26 @@ class Playlist:
 
         return similarity_score
 
-    # def draw_graph(self, playlist_id: list[str]) -> None:
-    #     """Description"""
-    #     graph = self.generate_graph(playlist_id, set())
-    #     subax1 = plt.subplot(221)
-    #     nx.draw(graph, with_labels=True, font_weight='bold')
-    #
-    #     plt.show()
+    def generating_graph(self) -> None:
+        """Generates a graph presented as a static HTML file."""
+        graph = Network(
+            notebook=True,
+            cdn_resources='remote',
+            height='750px',
+            width='100%',
+            select_menu=True,
+            filter_menu=True,
+        )
+        graph.add_node(self._song.features['track_name'])
 
+        for feature in FEATURES:
+            graph.add_node(feature, size=len(self._neighbours[feature]._neighbours), title=feature)
+            graph.add_edge(self._song.features['track_name'], feature)
 
-# def generate_graph(song: str, playlist_id: list[str], visited: set) -> nx:
-#     """function to generate a graph"""
-#     G = nx.Graph()
-#     songs = get_single_track_features(song)
-#     G.add_node(songs['track_name'])
-#
-#     playlist_features = song_features((playlist_id))
-#
-#     visited.add(songs['track_name'])
-#
-#     for song in playlist_features:
-#         visited.add(song['track_name'])
-#         similarity_scores = similarity_score1(song['track_id'], playlist_id)
-#         for score in similarity_scores:
-#             if similarity_scores[score] >= 85 and score not in visited:
-#                 G.add_node(score)
-#                 G.add_edge(song['track_name'], score)
-#     return G
-#
-#
-# def draw_graph(song: str, playlist_id: list[str]) -> None:
-#     """Description"""
-#     graph = generate_graph(song, playlist_id, set())
-#     # subax1 = plt.subplot(221)
-#     nx.draw(graph, with_labels=True, font_weight='bold')
-#
-#     plt.show()
+            for neighbour in self._neighbours[feature]._neighbours:
+                track_feature = get_tracks_features([neighbour])
+                track_name = track_feature[0]['track_name']
+                graph.add_node(track_name)
+                graph.add_edge(feature, track_name)
+
+        graph.show('graph.html')

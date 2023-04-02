@@ -55,14 +55,30 @@ def find_single_song(song_file: str, song: str) -> Optional[str]:
 
 def find_song(song_dict: dict, song: str) -> Optional[Track]:
     """Returns a Track if the song the user inputs is found in the song_file, and returns None otherwise."""
+    song = song.replace(' ', '')
+    song = song.replace(',', '')
+    song = song.lower()
     if song in song_dict:
         return Track(song_dict[song])
     else:
         return None
 
 
+def find_target_song(song_file: str, song: str) -> str:
+    """Returns Sptofy URI."""
+    song_dict = filter_csv(song_file)
+    song = song.replace(' ', '')
+    song = song.replace(',', '')
+    song = song.lower()
+    if song in song_dict:
+        track = Track(song_dict[song])
+        track_id = track.track_id
+        uri = 'spotify:track:' + track_id
+        return uri
+
+
 def most_similar_songs(song_file: str, song: str, user_preferences: list[float]) -> dict:
-    """Returns a list of the top 10 most similar songs from a csv file.
+    """Returns a dictionary of the top 10 most similar songs from a csv file.
 
     Preconditions:
         - song_file refers to a valid csv file

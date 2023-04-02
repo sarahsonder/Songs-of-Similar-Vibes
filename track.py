@@ -40,6 +40,13 @@ def filter_csv(song_file: str) -> dict:
     return song_dict
 
 
+def find_single_song(song_file: str, song: str) -> Optional[Track]:
+    """Returns a Track if the song the user inputs is found in the song_file, and returns None otherwise."""
+    song_dict = filter_csv(song_file)
+    if song in song_dict:
+        return Track(song_dict[song])
+
+    
 def find_song(song_dict: dict, song: str) -> Optional[Track]:
     """Returns a Track if the song the user inputs is found in the song_file, and returns None otherwise."""
     if song in song_dict:

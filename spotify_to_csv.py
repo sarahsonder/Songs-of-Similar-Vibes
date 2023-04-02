@@ -1,15 +1,30 @@
-"""Extracts data from Spotify API, cleans the data, and converts the data into a CSV file."""
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+"""CSC111 Winter 2023 Project: Songs of Similar Vibez
+
+This Python module extracts data from Spotify API, cleans the data, and converts the data
+into a CSV file.
+
+Copyright and Usage Information
+===============================
+
+This file is provided solely for the personal and private use of students
+taking CSC111 at the University of Toronto St. George campus. All forms of
+distribution of this code, whether as given or with any changes, are
+expressly prohibited. For more information on copyright for CSC111 materials,
+please consult our Course Syllabus.
+
+This file is Copyright (c) 2023 Vivian White, Sarah Wang, and Rebecca Kong.
+"""
 import csv
 from typing import Any
-
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="d77034c7981d435a82a71f3f515f9a3a",
-                                                           client_secret="5808c66cc4e04c0789dee00cb2e7b3d5"))
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
 
 
 def get_songs_from_playlists(playlists: list[str]) -> list[str]:
     """Takes a list of playlist URIs. Returns a list containing all the song URIs in the playlists.
+
+    Preconditions:
+        - All strings in playlists are a valid Spotify URI
 
     >>> playlst = ['spotify:playlist:3c3ORzOlXdL2pQPv7MtuS5', 'spotify:playlist:3mfVIXTsVA0O0yfHrPD4yE']
     >>> track_ids = get_songs_from_playlists(playlst)
@@ -18,6 +33,8 @@ def get_songs_from_playlists(playlists: list[str]) -> list[str]:
     """
     all_songs = []
 
+    sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="d77034c7981d435a82a71f3f515f9a3a",
+                                                               client_secret="5808c66cc4e04c0789dee00cb2e7b3d5"))
     for playlist in playlists:
         response = sp.playlist_items(playlist, offset=0, fields='items.track.id,total', additional_types=['track'])
 
@@ -30,7 +47,10 @@ def get_songs_from_playlists(playlists: list[str]) -> list[str]:
 
 
 def get_tracks_features(track_ids: list[str]) -> list[dict[str, Any]]:
-    """Takes in a list of song URIs, return the track features for each songs.
+    """Takes in a list of song URIs, return the track features for each song.
+
+    Preconditions:
+        - All strings in track_ids are valid Spotify URIs
 
     >>> playlst = ['spotify:playlist:3c3ORzOlXdL2pQPv7MtuS5']
     >>> songlst = get_songs_from_playlists(playlst)
@@ -41,6 +61,8 @@ def get_tracks_features(track_ids: list[str]) -> list[dict[str, Any]]:
     'track_name': 'Doppelgänger', 'track_artist': 'Lissom', 'track_id': '7qjF1j0sMTLcmiTKXwVh09'}
     """
     all_track_features = []
+    sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="d77034c7981d435a82a71f3f515f9a3a",
+                                                               client_secret="5808c66cc4e04c0789dee00cb2e7b3d5"))
 
     for track in track_ids:
         track_info = sp.track(track, market=None)
@@ -58,7 +80,11 @@ def get_tracks_features(track_ids: list[str]) -> list[dict[str, Any]]:
 
 
 def write_csv(playlists: list[str]) -> None:
-    """Creat a new csv with the all song features"""
+    """Creates a new csv file with the all song features.
+
+    Preconditions:
+        - All strings in playlists are valid Spotify URIs
+    """
     track_lst = get_songs_from_playlists(playlists)
     features = get_tracks_features(track_lst)
 
@@ -72,3 +98,8 @@ def write_csv(playlists: list[str]) -> None:
 if __name__ == '__main__':
     import doctest
     doctest.testmod(verbose=True)
+    import python_ta
+
+    python_ta.check_all(config={
+        'max-line-length': 120
+    })

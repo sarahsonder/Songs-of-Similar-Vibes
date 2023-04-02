@@ -1,84 +1,26 @@
-"""Interactive visualization"""
+"""CSC111 Winter 2023 Project: Songs of Similar Vibez
+
+This Python module contains the complete implementation of the Track class, with a
+Track object representing a single song on Spotify.
+
+Copyright and Usage Information
+===============================
+
+This file is provided solely for the personal and private use of students
+taking CSC111 at the University of Toronto St. George campus. All forms of
+distribution of this code, whether as given or with any changes, are
+expressly prohibited. For more information on copyright for CSC111 materials,
+please consult our Course Syllabus.
+
+This file is Copyright (c) 2023 Vivian White, Sarah Wang, and Rebecca Kong.
+"""
 
 from __future__ import annotations
 import tkinter as tk
 from tkinter import ttk, messagebox
-from track import Track
 from typing import Optional
-import csv
-
-
-def filter_csv(song_file: str) -> dict:
-    """Returns a dictionary based on song_file. The key is the name and the artist of the song all lowercased,
-    concatenated, with all spaces removed. Then, the associated value is the track id.
-    Preconditions:
-        - song_file refers to a valid csv file
-    """
-    with open(song_file) as csv_file:
-        reader = csv.reader(csv_file)
-        next(reader)
-
-        song_dict = {}
-        for row in reader:
-            song_name = row[1].replace(' ', '')
-            song_name = song_name.replace(',', '')
-            artist_name = row[2].replace(' ', '')
-            song_dict[song_name.lower() + artist_name.lower()] = row[0]
-
-    return song_dict
-
-
-def find_single_song(song_file: str, song: str) -> Optional[str]:
-    """Returns a Track if the song the user inputs is found in the song_file, and returns None otherwise."""
-    song_dict = filter_csv(song_file)
-    song = song.replace(' ', '')
-    song = song.replace(',', '')
-    if song in song_dict:
-        return song.lower()
-    else:
-        return None
-
-
-def find_song(song_dict: dict, song: str) -> Optional[Track]:
-    """Returns a Track if the song the user inputs is found in the song_file, and returns None otherwise."""
-    if song in song_dict:
-        return Track(song_dict[song])
-    else:
-        return None
-
-
-def most_similar_songs(song_file: str, song: str, user_preferences: list[float]) -> list[str]:
-    """Returns a list of the top 10 most similar songs from a csv file.
-    Preconditions:
-        - song_file refers to a valid csv file
-        - song != ''
-        - len(user_preferences) == 11
-    """
-    song_dict = filter_csv(song_file)
-    target = find_song(song_dict, song)
-    track_lst = []
-    returned_lst = []
-    track_song_and_artist = {}
-
-    if target is not None:
-        song_dict.pop(song)
-        for song in song_dict:
-            song = Track(song_dict[song])
-            track_lst.append(song)
-            track_song_and_artist[song.features['track_name']] = song.features['track_artist']
-
-        similarity_score = target.calc_similarity_score(track_lst, user_preferences)
-        sorted_similarity_scores = sorted(similarity_score.items(), key=lambda item: item[1], reverse=True)
-
-        if len(sorted_similarity_scores) > 10:
-            sorted_similarity_scores = sorted_similarity_scores[:11]
-
-        for song in sorted_similarity_scores:
-            if similarity_score[song[0]] >= 85:
-                artist = {track_song_and_artist[track] for track in track_song_and_artist if song[0] == track}
-                returned_lst.append(song[0] + ' by ' + artist.pop())
-
-    return returned_lst
+from handle_csv import find_single_song, find_target_song, most_similar_songs
+from graph import Playlist
 
 
 def create_gui(csv_file: str) -> None:
@@ -99,6 +41,14 @@ def create_gui(csv_file: str) -> None:
         three = two.lower()
         return find_single_song('small_dataset.csv', three)
 
+    def cleaned_song2() -> str:
+        """Konichiwa"""
+        track_name = track_entry.get()
+        one = track_name.replace(',', '')
+        two = one.replace(' ', '')
+        three = two.lower()
+        return find_target_song('small_dataset.csv', three)
+
     def search() -> None:
         """Hello"""
         track = cleaned_song()
@@ -113,7 +63,7 @@ def create_gui(csv_file: str) -> None:
         track = cleaned_song()
 
         if track is None:
-            messagebox.showwarning(title='Error', message='Please insert a valid song (╯°□°)╯︵ ┻━┻')
+            messagebox.showwarning(title='Error', message='Please insert a valid song.')
         else:
             preferences = [dance_cb.get(), speech_cb.get(), energy_cb.get(), acoustic_cb.get(), instru_cb.get(),
                            valence_cb.get(), loud_cb.get(), tempo_cb.get(), mode_cb.get(), duration_cb.get(),
@@ -130,15 +80,36 @@ def create_gui(csv_file: str) -> None:
                     converted_value = (2 * (1.38 ** (float_val - 5))) / 10
                     converted_preferences.append(converted_value)
 
-            chosen_tracks = most_similar_songs(csv_file, track, converted_preferences)
-            print(preferences)
-            print(converted_preferences)
+            chosen_tracks_pre = most_similar_songs(csv_file, track, converted_preferences)
+
+            chosen_tracks = []
+
+            for potential_track in chosen_tracks_pre:
+                chosen_tracks.append(chosen_tracks_pre[potential_track])
 
             #####################################################################
-
             upper_frame.destroy()
             mid_frame.destroy()
             bottom_frame.destroy()
+
+            def run_analysis() -> None:
+                """Adios"""
+                features = {'danceability', 'energy', 'loudness', 'mode', 'speechiness', 'acousticness',
+                            'instrumentalness', 'valence',
+                            'tempo', 'duration', 'time_signature'}
+                lst = []
+                for feature in features:
+                    lst.append(Playlist(feature))
+
+                songlst = []
+                for track_id in chosen_tracks_pre:
+                    songlst.append(track_id)
+
+                target_song = cleaned_song2()
+
+                p = Playlist(target_song, lst)
+                p.generate_playlist(songlst, converted_preferences)
+                p.generating_graph()
 
             def end() -> None:
                 """Nihao"""
@@ -152,16 +123,25 @@ def create_gui(csv_file: str) -> None:
             results.tag_configure('tag_name', justify='center')
             results.configure(state='normal')
 
-            for chosen_track in chosen_tracks:
-                results.insert(tk.INSERT, chosen_track + '\n\n')
+            if not chosen_tracks:
+                results.insert(tk.INSERT, 'No similar songs')
                 results.pack()
+            else:
+                for chosen_track in chosen_tracks:
+                    results.insert(tk.INSERT, chosen_track + '\n\n')
+                    results.pack()
 
             results.tag_add('tag_name', '1.0', 'end')
             results.configure(state='disabled')
 
-            # FINISH FRAME
+            analysis_frame = tk.Frame(root, bg='#306844', bd=5)
+            analysis_frame.place(relx=0.2, rely=0.85, relwidth=0.2, relheight=0.08)
+            analysis_button = tk.Button(analysis_frame, text='See Analysis', font=('Calibri', 17, 'bold'),
+                                        command=run_analysis)
+            analysis_button.place(relwidth=1, relheight=1)
+
             finish_frame = tk.Frame(root, bg='#306844', bd=5)
-            finish_frame.place(relx=0.34375, rely=0.85, relwidth=0.3125, relheight=0.08)
+            finish_frame.place(relx=0.6, rely=0.85, relwidth=0.2, relheight=0.08)
             finish_button = tk.Button(finish_frame, text='Finish', font=('Calibri', 17, 'bold'), command=end)
             finish_button.place(relwidth=1, relheight=1)
 
@@ -189,7 +169,8 @@ def create_gui(csv_file: str) -> None:
     instructions2.configure(state='normal')
     instructions2.insert(tk.INSERT,
                          ' Customization: on a scale of 0 - 10, rank the importance of a feature when generating '
-                         'recommendations.' + '\n' + ' You may leave any or all fields blank.' + '\n\n' +
+                         'recommendations.' + '\n' + ' You may leave any or all fields blank, '
+                                                     'in which the default value will be used.' + '\n\n' +
                          ' 0-4: less important, 5: default value, 6-10: more important.')
     instructions2.configure(state='disabled')
     instructions2.place(relwidth=1, relheight=0.275)
@@ -197,73 +178,58 @@ def create_gui(csv_file: str) -> None:
     # COMBOBOXES
     values = ['', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
-    # DANCEABILITY
     dance_lbl = tk.Label(mid_frame, text='Danceability')
     dance_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
     dance_lbl.place(relx=0.095, rely=0.32, relwidth=0.12, relheight=0.08)
     dance_cb.place(relx=0.08, rely=0.401, relwidth=0.15, relheight=0.08)
-    dance_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
-
-    # ENERGY
-    energy_lbl = tk.Label(mid_frame, text='Energy')
-    energy_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    energy_lbl.place(relx=0.325, rely=0.32, relwidth=0.12, relheight=0.08)
-    energy_cb.place(relx=0.31, rely=0.401, relwidth=0.15, relheight=0.08)
-    energy_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
-
-    # LOUDNESS
-    loud_lbl = tk.Label(mid_frame, text='Loudness')
-    loud_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    loud_lbl.place(relx=0.555, rely=0.32, relwidth=0.12, relheight=0.08)
-    loud_cb.place(relx=0.54, rely=0.401, relwidth=0.15, relheight=0.08)
-    loud_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
-
-    # MODE
-    mode_lbl = tk.Label(mid_frame, text='Mode (major/minor)')
-    mode_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    mode_lbl.place(relx=0.76, rely=0.32, relwidth=0.17, relheight=0.08)
-    mode_cb.place(relx=0.77, rely=0.401, relwidth=0.15, relheight=0.08)
-    mode_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
 
     speech_lbl = tk.Label(mid_frame, text='Speechiness')
     speech_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    speech_lbl.place(relx=0.095, rely=0.57, relwidth=0.12, relheight=0.08)
-    speech_cb.place(relx=0.08, rely=0.65, relwidth=0.15, relheight=0.08)
-    speech_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
+    speech_lbl.place(relx=0.325, rely=0.32, relwidth=0.12, relheight=0.08)
+    speech_cb.place(relx=0.31, rely=0.401, relwidth=0.15, relheight=0.08)
+
+    energy_lbl = tk.Label(mid_frame, text='Energy')
+    energy_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
+    energy_lbl.place(relx=0.555, rely=0.32, relwidth=0.12, relheight=0.08)
+    energy_cb.place(relx=0.54, rely=0.401, relwidth=0.15, relheight=0.08)
 
     acoustic_lbl = tk.Label(mid_frame, text='Acousticness')
     acoustic_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    acoustic_lbl.place(relx=0.325, rely=0.57, relwidth=0.12, relheight=0.08)
-    acoustic_cb.place(relx=0.31, rely=0.65, relwidth=0.15, relheight=0.08)
-    acoustic_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
+    acoustic_lbl.place(relx=0.77, rely=0.32, relwidth=0.15, relheight=0.08)
+    acoustic_cb.place(relx=0.77, rely=0.401, relwidth=0.15, relheight=0.08)
 
     instru_lbl = tk.Label(mid_frame, text='Instrumentalness')
     instru_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    instru_lbl.place(relx=0.54, rely=0.57, relwidth=0.15, relheight=0.08)
-    instru_cb.place(relx=0.54, rely=0.65, relwidth=0.15, relheight=0.08)
-    instru_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
+    instru_lbl.place(relx=0.08, rely=0.57, relwidth=0.15, relheight=0.08)
+    instru_cb.place(relx=0.08, rely=0.65, relwidth=0.15, relheight=0.08)
 
     valence_lbl = tk.Label(mid_frame, text='Valence')
     valence_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    valence_lbl.place(relx=0.785, rely=0.57, relwidth=0.12, relheight=0.08)
-    valence_cb.place(relx=0.77, rely=0.65, relwidth=0.15, relheight=0.08)
-    valence_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
+    valence_lbl.place(relx=0.325, rely=0.57, relwidth=0.12, relheight=0.08)
+    valence_cb.place(relx=0.31, rely=0.65, relwidth=0.15, relheight=0.08)
+
+    loud_lbl = tk.Label(mid_frame, text='Loudness')
+    loud_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
+    loud_lbl.place(relx=0.54, rely=0.57, relwidth=0.15, relheight=0.08)
+    loud_cb.place(relx=0.54, rely=0.65, relwidth=0.15, relheight=0.08)
 
     tempo_lbl = tk.Label(mid_frame, text='Tempo')
     tempo_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    tempo_lbl.place(relx=0.21, rely=0.82, relwidth=0.12, relheight=0.08)
-    tempo_cb.place(relx=0.195, rely=0.901, relwidth=0.15, relheight=0.08)
-    tempo_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
+    tempo_lbl.place(relx=0.785, rely=0.57, relwidth=0.12, relheight=0.08)
+    tempo_cb.place(relx=0.77, rely=0.65, relwidth=0.15, relheight=0.08)
+
+    mode_lbl = tk.Label(mid_frame, text='Mode (major/minor)')
+    mode_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
+    mode_lbl.place(relx=0.185, rely=0.82, relwidth=0.17, relheight=0.08)
+    mode_cb.place(relx=0.195, rely=0.901, relwidth=0.15, relheight=0.08)
 
     duration_lbl = tk.Label(mid_frame, text='Duration')
     duration_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
     duration_lbl.place(relx=0.435, rely=0.82, relwidth=0.12, relheight=0.08)
     duration_cb.place(relx=0.42, rely=0.901, relwidth=0.15, relheight=0.08)
-    duration_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
 
     timesig_lbl = tk.Label(mid_frame, text='Time Signature')
     timesig_cb = ttk.Combobox(mid_frame, values=values, state='readonly')
-    timesig_cb.bind("<<ComboboxSelected>>", lambda e: mid_frame.focus())
     timesig_lbl.place(relx=0.67, rely=0.82, relwidth=0.12, relheight=0.08)
     timesig_cb.place(relx=0.655, rely=0.901, relwidth=0.15, relheight=0.08)
 

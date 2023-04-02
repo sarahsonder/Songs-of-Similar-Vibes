@@ -34,6 +34,7 @@ def filter_csv(song_file: str) -> dict:
         song_dict = {}
         for row in reader:
             song_name = row[1].replace(' ', '')
+            song_name = song_name.replace(',', '')
             artist_name = row[2].replace(' ', '')
             song_dict[song_name.lower() + artist_name.lower()] = row[0]
 
@@ -45,24 +46,50 @@ def find_single_song(song_file: str, song: str) -> Optional[Track]:
     song_dict = filter_csv(song_file)
     if song in song_dict:
         return Track(song_dict[song])
+    else:
+        return None
 
-    
+
 def find_song(song_dict: dict, song: str) -> Optional[Track]:
     """Returns a Track if the song the user inputs is found in the song_file, and returns None otherwise."""
     if song in song_dict:
         return Track(song_dict[song])
+    else:
+        return None
 
 
-# def most_similar_songs(song_file: str, song: str, user_preferences: list[float]) -> list[str]:
-#     song_dict = filter_csv(song_file)
-#     target = find_song(song_dict, song)
-#     song_dict.pop(target)
-#     track_lst = []
-#     if target is not None:
-#         for song in song_dict:
-#             track_lst.append(Track(song_dict[song]))
-#
-#         similarity_score = target.calc_similarity_score(track_lst, user_preferences)
+def most_similar_songs(song_file: str, song: str, user_preferences: list[float]) -> list[str]:
+    """Returns a list of the top 10 most similar songs from a csv file.
+
+    Preconditions:
+        - song_file refers to a valid csv file
+        - song != ''
+        - len(user_preferences) == 11
+    """
+    song_dict = filter_csv(song_file)
+    target = find_song(song_dict, song)
+    track_lst = []
+    returned_lst = []
+    track_song_and_artist = {}
+
+    if target is not None:
+        song_dict.pop(song)
+        for song in song_dict:
+            song = Track(song_dict[song])
+            track_lst.append(song)
+            track_song_and_artist[song.features['track_name']] = song.features['track_artist']
+
+        similarity_score = target.calc_similarity_score(track_lst, user_preferences)
+        sorted_similarity_scores = sorted(similarity_score.items(), key=lambda item: item[1], reverse=True)
+
+        if len(sorted_similarity_scores) > 10:
+            sorted_similarity_scores = sorted_similarity_scores[:11]
+
+        for song in sorted_similarity_scores:
+            artist = {track_song_and_artist[track] for track in track_song_and_artist if song[0] == track}
+            returned_lst.append(song[0] + ' by ' + artist.pop())
+
+    return returned_lst
 
 
 class Track:

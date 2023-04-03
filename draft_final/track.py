@@ -54,17 +54,18 @@ class Track:
         updated such that every audible "characteristic" in features is present and has a corresponding
         value in is_connected.
 
+        user_preferences is in order: danceability, speechiness, energy, acousticness, instrumentalness,
+        valence, loudness, tempo, mode, duration, time_signature
+
         This method will also return a dictionary mapping from the name of a song, to its cumulatively calculated
         general similarity score between itself and the central song.
 
         After running this method, the Track has all the necessary information to generate a Playlist.
 
         Preconditions:
-            - all(0.0 <= preference <= 1.0 for preference in user_preferences)
+            - all(0.0 <= preference <= 1.1 for preference in user_preferences)
             - self.is_connected == {}
         """
-        # user preferences is in order: danceability, speechiness, energy, acousticness, instrumentalness \
-        # valence, loudness, tempo, mode, duration, time_signature
         target = get_tracks_features([self.track_id])[0]
         similar_variables = ['danceability', 'speechiness', 'energy', 'acousticness', 'instrumentalness', 'valence']
 
@@ -110,5 +111,8 @@ if __name__ == '__main__':
     import python_ta
 
     python_ta.check_all(config={
-        'max-line-length': 120
+        'extra-imports': ['spotify_to_csv', 'track'],
+        'max-line-length': 120,
+        'disable': ['R0914']
+
     })

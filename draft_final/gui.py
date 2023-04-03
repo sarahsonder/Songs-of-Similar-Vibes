@@ -22,13 +22,13 @@ from handle_csv import filter_csv, find_song, most_similar_songs
 from graph import Playlist
 
 
-def create_gui(csv_file) -> None:
+def create_gui(csv_file: str) -> None:
     """Creates the visualization"""
     root = tk.Tk()
     root.title('Songs of Similar Vibes')
     root.geometry('900x600')
 
-    background_img = tk.PhotoImage(file='background_pic1.png')
+    background_img = tk.PhotoImage(file='background_pic.png')
     background_label = tk.Label(root, image=background_img)
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -64,7 +64,7 @@ def create_gui(csv_file) -> None:
 
         return converted_preferences
 
-    def tab2():
+    def tab2() -> None:
         """Hola"""
         user_entry = track_entry.get()
         no_space = user_entry.replace(' ', '')
@@ -231,3 +231,16 @@ def create_gui(csv_file) -> None:
     button.place(relwidth=1, relheight=1)
 
     root.mainloop()
+
+
+if __name__ == '__main__':
+    import doctest
+
+    doctest.testmod(verbose=True)
+    import python_ta
+
+    python_ta.check_all(config={
+        'max-line-length': 120,
+        'allowed-io': ['write_csv'],
+        'extra-imports': ['__future__', 'tkinter', 'handle_csv', 'graph']
+    })

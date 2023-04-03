@@ -90,11 +90,18 @@ class Playlist:
         """
         songs_list = [Track(s) for s in songs]
         similarity_score = self._song.calc_similarity_score(songs_list, user_preferences)
+        sorted_similarity_scores = sorted(similarity_score.items(), key=lambda item: item[1], reverse=True)
+
+        if len(sorted_similarity_scores) > 10:
+            sorted_similarity_scores = sorted_similarity_scores[:11]
+
+        top_10_song_names = {song[0] for song in sorted_similarity_scores}
+
         for song in songs_list:
             exclude_features = {'track_name', 'track_artist', 'track_id', 'title_and_artist'}
             for feature in song.features:
                 if feature not in exclude_features and similarity_score[song.features['track_name']] >= 85 and \
-                        song.is_connected[feature]:
+                        song.is_connected[feature] and song.features['track_name'] in top_10_song_names:
                     playlist = Playlist(song.track_id)
                     self._neighbours[feature].add_neighbour(playlist)
 
@@ -138,7 +145,7 @@ class Playlist:
             filter_menu=True,
         )
         if buttons:
-            network.show_buttons(filter_=["edges"])
+            network.show_buttons(filter_=["edges", "physics"])
         network.from_nx(graph)
         network.show('playlist.html')
 
@@ -151,5 +158,6 @@ if __name__ == '__main__':
 
     python_ta.check_all(config={
         'extra-imports': ['networkx', 'pyvis.network', 'spotify_to_csv', 'track'],
-        'max-line-length': 120
+        'max-line-length': 120,
+        'disable': ['E9988']
     })

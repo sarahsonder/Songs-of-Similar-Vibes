@@ -1,12 +1,12 @@
-track_id,track_name,track_artist,danceability,energy,loudness,mode,speechiness,acousticness,instrumentalness,valence,tempo,duration_ms,time_signature
-7qjF1j0sMTLcmiTKXwVh09,Doppelganger,Lissom,0.276,0.154,-18.451,0,0.0327,0.968,0.363,0.144,80.763,209815,3
-566yEfNfBoojymRCZRbkxU,howling,mehro,0.496,0.335,-11.137,1,0.0347,0.891,0.439,0.207,75.96,213720,4
-136J2Jkg8sG7P5wilO9P1R,Meant To Be,Ber,0.5,0.156,-11.472,1,0.0469,0.87,0,0.405,173.794,163227,4
-09nkMM33HufRzV8oBo2ksI,the end of the world,Aidan Alexander,0.295,0.445,-11.017,1,0.0488,0.541,0.000162,0.285,93.102,162110,4
-3MIMKvXfK4bqkJ2wteG5Jq,The Subway Song,Delacey,0.58,0.662,-6.208,1,0.0594,0.124,0.000139,0.403,108.048,241854,4
-6WlIGaec3CUc0cP7insUiW,A Drop in the Ocean,Varqa Buehrer,0.217,0.281,-15.272,0,0.0383,0.751,0.87,0.0383,117.77,139960,3
-3R8iyJpmhI9ABDmTpetV2D,Blue,TAEYEON,0.449,0.46,-7.081,1,0.0404,0.881,1.44E-05,0.137,99.468,212842,4
-6eyp8vz9M5taPrigE0F6jI,"A Thought, Persisted",Nathan Shubert,0.52,0.084,-23.809,0,0.0362,0.989,0.861,0.257,113.881,199600,4
-3Kj2EWpIBnvETsYq4cq0IH,Big Black Car,Gregory Alan Isakov,0.6,0.186,-15.926,1,0.0317,0.909,0.00102,0.468,110.044,217467,4
-24w5VE8pgeRt9y5Itip3ns,Better Days,Varqa Buehrer,0.352,0.0187,-25.605,1,0.0416,0.987,0.968,0.0774,70.103,69973,3
-2GwajrNsZaDvlWiN7uQlr0,We Move Lightly,Dustin O'Halloran,0.261,0.172,-16.964,0,0.0409,0.949,0.856,0.0662,150.136,186797,4
+track_id,track_name,track_artist,title_and_artist,danceability,energy,loudness,mode,speechiness,acousticness,instrumentalness,valence,tempo,duration_ms,time_signature,,,,,,,,,,danceability,energy,loudness,mode,speechiness,acousticness,instrumentalness,valence,tempo,duration_ms,time_signature
+7qjF1j0sMTLcmiTKXwVh09,Doppelgänger,Lissom,doppelgängerlissom,0.276,0.154,-18.451,0,0.0327,0.968,0.363,0.144,80.763,209815,3,,,,,,,,,,0.276,0.154,-18.451,0,0.0327,0.968,0.363,0.144,80.763,209815,3
+566yEfNfBoojymRCZRbkxU,howling,mehro,howlingmehro,0.496,0.335,-11.137,1,0.0347,0.891,0.439,0.207,75.96,213720,4,,,,,,,,,,0.496,0.335,-11.137,1,0.0347,0.891,0.439,0.207,75.96,213720,4
+136J2Jkg8sG7P5wilO9P1R,Meant To Be,Ber,meanttobeber,0.5,0.156,-11.472,1,0.0469,0.87,0,0.405,173.794,163227,4,,,,,,,,,,0.5,0.156,-11.472,1,0.0469,0.87,0,0.405,173.794,163227,4
+09nkMM33HufRzV8oBo2ksI,the end of the world,Aidan Alexander,theendoftheworldaidanalexander,0.295,0.445,-11.017,1,0.0488,0.541,0.000162,0.285,93.102,162110,4,,,,,,,,,,0.295,0.445,-11.017,1,0.0488,0.541,0.000162,0.285,93.102,162110,4
+3MIMKvXfK4bqkJ2wteG5Jq,The Subway Song,Delacey,thesubwaysongdelacey,0.58,0.662,-6.208,1,0.0594,0.124,0.000139,0.403,108.048,241854,4,,,,,,,,,,0.58,0.662,-6.208,1,0.0594,0.124,0.000139,0.403,108.048,241854,4
+6WlIGaec3CUc0cP7insUiW,A Drop in the Ocean,Varqa Buehrer,adropintheoceanvarqabuehrer,0.217,0.281,-15.272,0,0.0383,0.751,0.87,0.0383,117.77,139960,3,,,,,,,,,,0.217,0.281,-15.272,0,0.0383,0.751,0.87,0.0383,117.77,139960,3
+3R8iyJpmhI9ABDmTpetV2D,Blue,TAEYEON,bluetaeyeon,0.449,0.46,-7.081,1,0.0404,0.881,1.44E-05,0.137,99.468,212842,4,,,,,,,,,,0.449,0.46,-7.081,1,0.0404,0.881,1.44E-05,0.137,99.468,212842,4
+6eyp8vz9M5taPrigE0F6jI,"A Thought, Persisted",Nathan Shubert,"athought,persistednathanshubert",0.52,0.084,-23.809,0,0.0362,0.989,0.861,0.257,113.881,199600,4,,,,,,,,,,0.52,0.084,-23.809,0,0.0362,0.989,0.861,0.257,113.881,199600,4
+3Kj2EWpIBnvETsYq4cq0IH,Big Black Car,Gregory Alan Isakov,bigblackcargregoryalanisakov,0.6,0.186,-15.926,1,0.0317,0.909,0.00102,0.468,110.044,217467,4,,,,,,,,,,0.6,0.186,-15.926,1,0.0317,0.909,0.00102,0.468,110.044,217467,4
+24w5VE8pgeRt9y5Itip3ns,Better Days,Varqa Buehrer,betterdaysvarqabuehrer,0.352,0.0187,-25.605,1,0.0416,0.987,0.968,0.0774,70.103,69973,3,,,,,,,,,,0.352,0.0187,-25.605,1,0.0416,0.987,0.968,0.0774,70.103,69973,3
+2GwajrNsZaDvlWiN7uQlr0,We Move Lightly,Dustin O'Halloran,wemovelightlydustino'halloran,0.261,0.172,-16.964,0,0.0409,0.949,0.856,0.0662,150.136,186797,4,,,,,,,,,,0.261,0.172,-16.964,0,0.0409,0.949,0.856,0.0662,150.136,186797,4

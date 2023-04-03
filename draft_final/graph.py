@@ -36,6 +36,7 @@ class Playlist:
         - _neighbours: a mapping consisting of every node connected to this node. It maps
         from the name of a song or attribute to the Playlist which is connected to self and
         contains that name.
+
     Representation Invariants:
         - all(self._neighbours[neighbour]._song == neighbour or self._neighbours[neighbour]._song.track_id /
         == neighbour for neighbour in self._neighbours)
@@ -47,7 +48,8 @@ class Playlist:
 
     def __init__(self, song: str, features_list: Optional[list[Playlist]] = None) -> None:
         """Initialize a new Playlist.
-        Preconditions:8
+
+        Preconditions:
             - all(playlist._song.isinstance(str) for playlist in features_list)
             - song is a valid Spotify URI
         """
@@ -67,6 +69,7 @@ class Playlist:
 
     def add_neighbour(self, song: Playlist) -> None:
         """Connects a new neighbour to a feature node.
+
         Preconditions:
             - self._song.isinstance(str)
             - song.is_connected[self._song]
@@ -76,6 +79,7 @@ class Playlist:
 
     def generate_playlist(self, songs: list[str], user_preferences: list[float]) -> dict[str, float]:
         """Updates the playlist graph to reflect the similarity scores of the songs.
+
         Preconditions:
             - all(0.0 <= preference <= 1.1 for preference in user_preferences)
             - all strings in songs are valid Spotify URIs
@@ -96,9 +100,9 @@ class Playlist:
         return similarity_score
 
     def generating_graph(self, buttons: bool = True) -> None:
-        """Generates a graph presented as a static HTML file.
+        """Generates a graph presented as a static HTML file that can be opened in PyCharm or web browser.
 
-        buttons is a bool with default value of True. If True, it displays a panel that is
+        buttons is a bool with default value of True. When True, it displays a panel that is
         used to dynamically alter the settings pertaining to the graph network.Specifically, it
         lets the user alter and find the most optimal parameters for the graph’s physics and layout.
         """
@@ -142,8 +146,9 @@ if __name__ == '__main__':
     import doctest
     doctest.testmod(verbose=True)
 
-    # import python_ta
-    #
-    # python_ta.check_all(config={
-    #     'max-line-length': 120
-    # })
+    import python_ta
+
+    python_ta.check_all(config={
+        'extra-imports': ['networkx', 'pyvis.network', 'spotify_to_csv', 'track'],
+        'max-line-length': 120
+    })

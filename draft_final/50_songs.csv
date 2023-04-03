@@ -1,51 +1,51 @@
-danceability,energy,loudness,mode,speechiness,acousticness,instrumentalness,valence,tempo,duration_ms,time_signature,track_name,track_artist,track_id,title_and_artist
-0.707,0.681,-4.325,1,0.0668,0.0632,5.15e-06,0.646,117.999,200455,4,Flowers,Miley Cyrus,4DHcnVTT87F0zZhRPYmZ3B,flowersmileycyrus
-0.668,0.758,-5.176,0,0.0332,0.483,1.89e-05,0.834,147.989,165671,3,Ella Baila Sola,Eslabon Armado,3dnP0JxCgygwQH9Gm7q7nb,ellabailasolaeslabonarmado
-0.644,0.735,-5.747,1,0.0391,0.0521,0.144,0.418,88.98,153947,4,Kill Bill,SZA,1Qrg8KqiBpW07V7PNxwwwL,killbillsza
-0.72,0.63,-3.547,0,0.277,0.673,0,0.607,179.974,199440,4,TQG,KAROL G,0DWdj2oZMBFSzRsi2Cvfzf,tqgkarolg
-0.768,0.644,-6.671,0,0.136,0.736,0.000837,0.53,95.05,194543,4,BESO,ROSALÍA,609E1JCInJncactoMmkDon,besorosalía
-0.696,0.809,-8.254,1,0.05,0.252,0.000128,0.857,132.962,131013,4,Boy's a liar Pt. 2,PinkPantheress,6AQbmUe0Qwf5PZnt4HmTXv,boy'saliarpt.2pinkpantheress
-0.812,0.479,-5.678,0,0.333,0.213,1.21e-06,0.559,169.922,234353,4,La Bebe - Remix,Yng Lvcas,2UW7JaomAMuX9pZrjVpHAU,labebe-remixynglvcas
-0.52,0.731,-5.338,0,0.0557,0.342,0.00101,0.662,173.93,167303,4,As It Was,Harry Styles,4Dvkj6JhhA12EX05fT7y2e,asitwasharrystyles
-0.575,0.5,-7.594,0,0.0707,0.227,0,0.506,67.033,232857,4,Die For You (with Ariana Grande) - Remix,The Weeknd,4W4fNrZYkobj539TOWsLO2,dieforyou(witharianagrande)-remixtheweeknd
-0.841,0.384,-7.684,0,0.0351,0.0236,2.28e-06,0.597,123.961,173134,4,FLOWER,JISOO,69CrOS7vEHIrhC2ILyEi0s,flowerjisoo
-0.715,0.62,-6.005,0,0.0484,0.417,0,0.172,97.95,221520,4,Creepin' (with The Weeknd & 21 Savage),Metro Boomin,2dHHgzDwk4BJdRwy9uXhTO,creepin'(withtheweeknd&21savage)metroboomin
-0.783,0.729,-3.549,0,0.0691,0.0492,0.000272,0.58,167.968,216148,4,Yandel 150,Yandel,4FAKtPVycI4DxoOHC01YqD,yandel150yandel
-0.778,0.632,-5.6,0,0.0493,0.274,0,0.498,122.104,218289,4,"Shakira: Bzrp Music Sessions, Vol. 53",Bizarrap,4nrPB8O7Y7wsOCJdgXkthe,"shakira:bzrpmusicsessions,vol.53bizarrap"
-0.801,0.806,-5.206,1,0.0381,0.382,0.000669,0.802,106.999,239318,4,Calm Down (with Selena Gomez),Rema,0WtM2NBVQNNJLh6scP13H8,calmdown(withselenagomez)rema
-0.629,0.733,-5.445,1,0.0419,0.0025,0,0.362,120.001,212241,4,Like Crazy,Jimin,3Ua0m0YmEjrMi9XErKcNiR,likecrazyjimin
-0.783,0.592,-8.332,0,0.0331,0.435,4.15e-06,0.726,120.018,174253,4,Cupid - Twin Ver.,FIFTY FIFTY,7FbrGaHYVDmfr7KoLIZnQ7,cupid-twinver.fiftyfifty
-0.784,0.826,-6.34,0,0.0538,0.0965,7.09e-05,0.893,138.078,184066,3,PRC,Peso Pluma,2mpoNBkngUEwnaKoBhZ0vl,prcpesopluma
-0.772,0.73,-6.657,0,0.0972,0.152,0.000107,0.786,136.175,174943,3,AMG,Natanael Cano,1lRtH4FszTrwwlK5gTSbXO,amgnatanaelcano
-0.637,0.643,-6.571,1,0.0519,0.13,1.8e-06,0.533,97.008,200690,4,Anti-Hero,Taylor Swift,0V3wPSX9ygBnCm8psDIegu,anti-herotaylorswift
-0.586,0.525,-7.163,0,0.0615,0.111,0,0.508,133.629,260253,4,Die For You,The Weeknd,2LBqCSwhJGcFQeTHMVGwy3,dieforyoutheweeknd
-0.712,0.463,-7.399,1,0.0797,0.011,2.96e-06,0.206,131.199,156943,4,Unholy (feat. Kim Petras),Sam Smith,0NZPBYD5qbEWRs3PrGiRkT,unholy(feat.kimpetras)samsmith
-0.623,0.755,-5.386,1,0.0415,0.00306,0,0.32,119.957,212254,4,Like Crazy (English Version),Jimin,0u8rZGtXJrLtiSe34FPjGG,likecrazy(englishversion)jimin
-0.492,0.675,-5.456,1,0.0389,0.467,0,0.478,203.759,163855,4,Last Night,Morgan Wallen,7K3BhSpAxZBznislvUMVtn,lastnightmorganwallen
-0.835,0.679,-5.329,0,0.0364,0.583,1.98e-06,0.85,124.98,162638,4,La Bachata,Manuel Turizo,3tt9i3Hhzq84dPS8H7iSiJ,labachatamanuelturizo
-0.574,0.469,-8.209,1,0.0254,0.534,9.21e-05,0.288,132.023,242485,4,Here With Me,d4vd,78Sw5GDo6AlGwTwanjXbGh,herewithmed4vd
-0.561,0.965,-3.673,0,0.0343,0.00383,7.07e-06,0.304,128.04,175238,4,I'm Good (Blue),David Guetta,4uUG5RXrOk84mYEfFvj3cK,i'mgood(blue)davidguetta
-0.683,0.764,-5.995,1,0.0441,0.0427,0,0.137,149.949,160325,4,Coco Chanel,Eladio Carrion,0PB0O24JqAuNdOAFVJljMS,cocochaneleladiocarrion
-0.901,0.589,-6.713,0,0.289,0.00302,0.000237,0.399,98.002,196600,4,Hey Mor,Ozuna,1zsPaEkglFvxjAhrM8yhpr,heymorozuna
-0.558,0.648,-7.081,0,0.055,0.226,7.76e-06,0.844,143.876,187226,3,El Azul,Junior H,1haJsMtoBhHfvuM7XWuT3W,elazuljuniorh
-0.464,0.417,-9.345,0,0.0256,0.136,0.022,0.479,67.528,183956,4,I Wanna Be Yours,Arctic Monkeys,5XeFesFbtLpXzIVDNQP22n,iwannabeyoursarcticmonkeys
-0.551,0.55,-5.339,1,0.0286,0.777,0,0.342,101.19,176440,3,Until I Found You (with Em Beihold) - Em Beihold Version,Stephen Sanchez,1Y3LN4zO1Edc2EluIoSPJN,untilifoundyou(withembeihold)-embeiholdversionstephensanchez
-0.515,0.593,-4.801,1,0.0322,0.653,0.162,0.153,94.467,209260,3,golden hour,JVKE,5odlY52u43F5BjByhxg7wg,goldenhourjvke
-0.679,0.587,-7.015,1,0.276,0.141,6.35e-06,0.486,186.003,230453,4,Starboy,The Weeknd,7MXVkk9YMctZqd1Srtv4MB,starboytheweeknd
-0.442,0.538,-8.55,0,0.0451,0.717,2.95e-05,0.139,122.758,244360,4,Another Love,Tom Odell,7jtQIBanIiJOMS6RyCx6jZ,anotherlovetomodell
-0.804,0.771,-4.067,0,0.0433,0.357,3.07e-06,0.739,126.956,212253,4,OMG,NewJeans,65FftemJ1DbbZ45DUfHJXE,omgnewjeans
-0.621,0.782,-5.548,1,0.044,0.0125,0.033,0.55,128.033,198938,4,"Quevedo: Bzrp Music Sessions, Vol. 52",Bizarrap,2tTmW7RDtMQtBk7m2rYeSw,"quevedo:bzrpmusicsessions,vol.52bizarrap"
-0.697,0.802,-6.412,1,0.0456,0.0988,3.55e-05,0.822,139.951,148120,4,I Ain't Worried,OneRepublic,4fYte8ZvTK14NEhAOZocBi,iain'tworriedonerepublic
-0.538,0.742,-5.355,1,0.114,0.138,4.67e-05,0.25,96.107,272373,4,Escapism.,RAYE,5mHdCZtVyb4DcJw8799hZp,escapism.raye
-0.716,0.78,-3.495,0,0.297,0.55,0,0.786,123.856,228387,4,"Arcángel: Bzrp Music Sessions, Vol. 54",Bizarrap,7cQ0LAxT5HHCLGbxcjaxac,"arcángel:bzrpmusicsessions,vol.54bizarrap"
-0.954,0.516,-5.817,1,0.16,0.03,7.54e-06,0.624,105.001,139560,4,Players,Coi Leray,6UN73IYd0hZxLi8wFPMQij,playerscoileray
-0.637,0.678,-3.798,1,0.266,0.209,0,0.254,84.039,250760,4,Mockingbird,Eminem,561jH07mF1jHuk7KlaeF0s,mockingbirdeminem
-0.736,0.8,-5.38,0,0.0525,0.179,0,0.961,140.253,112087,3,El Gordo Trae El Mando,Chino Pacas,3kf0WdFOalKWBkCCLJo4mA,elgordotraeelmandochinopacas
-0.865,0.573,-5.501,1,0.0678,0.0863,0,0.563,94.999,155960,4,Feliz Cumpleaños Ferxxo,Feid,2CeKVsFFXG4QzA415QygGb,felizcumpleañosferxxofeid
-0.887,0.234,-14.52,1,0.178,0.111,0.67,0.197,140.02,196800,4,La Jumpa,Arcángel,2mnXxnrX5vCGolNkaFvVeM,lajumpaarcángel
-0.628,0.668,-2.722,1,0.117,0.329,0,0.845,148.746,136913,3,Ch y la Pizza,Fuerza Regida,0UbesRsX2TtiCeamOIVEkp,chylapizzafuerzaregida
-0.838,0.708,-4.668,0,0.166,0.176,0,0.96,119.984,128677,4,Rara Vez,Taiu,7MVIfkyzuUmQ716j8U7yGR,raraveztaiu
-0.585,0.815,-4.165,0,0.0565,0.115,0,0.564,132.09,200930,4,Set Me Free Pt.2,Jimin,59hBR0BCtJsfIbV9VzCVAp,setmefreept.2jimin
-0.559,0.551,-7.231,1,0.132,0.141,0,0.392,143.008,201800,4,Snooze,SZA,4iZ4pt7kvcaH6Yo8UoZ4s2,snoozesza
-0.772,0.75,-3.67,0,0.0455,0.0201,0,0.587,114.061,165265,4,Bones,Imagine Dragons,54ipXppHLA8U4yqpOFTUhr,bonesimaginedragons
-0.699,0.541,-4.943,1,0.0826,0.0628,0,0.365,98.395,224921,4,Fin de Semana,Oscar Maydon,6TBzRwnX2oYd8aOrOuyK1p,findesemanaoscarmaydon
+track_id,track_name,track_artist,title_and_artist,danceability,energy,loudness,mode,speechiness,acousticness,instrumentalness,valence,tempo,duration_ms,time_signature
+4DHcnVTT87F0zZhRPYmZ3B,Flowers,Miley Cyrus,flowersmileycyrus,0.707,0.681,-4.325,1,0.0668,0.0632,5.15E-06,0.646,117.999,200455,4
+3dnP0JxCgygwQH9Gm7q7nb,Ella Baila Sola,Eslabon Armado,ellabailasolaeslabonarmado,0.668,0.758,-5.176,0,0.0332,0.483,1.89E-05,0.834,147.989,165671,3
+1Qrg8KqiBpW07V7PNxwwwL,Kill Bill,SZA,killbillsza,0.644,0.735,-5.747,1,0.0391,0.0521,0.144,0.418,88.98,153947,4
+0DWdj2oZMBFSzRsi2Cvfzf,TQG,KAROL G,tqgkarolg,0.72,0.63,-3.547,0,0.277,0.673,0,0.607,179.974,199440,4
+609E1JCInJncactoMmkDon,BESO,ROSALÍA,besorosalía,0.768,0.644,-6.671,0,0.136,0.736,0.000837,0.53,95.05,194543,4
+6AQbmUe0Qwf5PZnt4HmTXv,Boy's a liar Pt. 2,PinkPantheress,boy'saliarpt.2pinkpantheress,0.696,0.809,-8.254,1,0.05,0.252,0.000128,0.857,132.962,131013,4
+2UW7JaomAMuX9pZrjVpHAU,La Bebe - Remix,Yng Lvcas,labebe-remixynglvcas,0.812,0.479,-5.678,0,0.333,0.213,1.21E-06,0.559,169.922,234353,4
+4Dvkj6JhhA12EX05fT7y2e,As It Was,Harry Styles,asitwasharrystyles,0.52,0.731,-5.338,0,0.0557,0.342,0.00101,0.662,173.93,167303,4
+4W4fNrZYkobj539TOWsLO2,Die For You (with Ariana Grande) - Remix,The Weeknd,dieforyou(witharianagrande)-remixtheweeknd,0.575,0.5,-7.594,0,0.0707,0.227,0,0.506,67.033,232857,4
+69CrOS7vEHIrhC2ILyEi0s,FLOWER,JISOO,flowerjisoo,0.841,0.384,-7.684,0,0.0351,0.0236,2.28E-06,0.597,123.961,173134,4
+2dHHgzDwk4BJdRwy9uXhTO,Creepin' (with The Weeknd & 21 Savage),Metro Boomin,creepin'(withtheweeknd&21savage)metroboomin,0.715,0.62,-6.005,0,0.0484,0.417,0,0.172,97.95,221520,4
+4FAKtPVycI4DxoOHC01YqD,Yandel 150,Yandel,yandel150yandel,0.783,0.729,-3.549,0,0.0691,0.0492,0.000272,0.58,167.968,216148,4
+4nrPB8O7Y7wsOCJdgXkthe,"Shakira: Bzrp Music Sessions, Vol. 53",Bizarrap,"shakira:bzrpmusicsessions,vol.53bizarrap",0.778,0.632,-5.6,0,0.0493,0.274,0,0.498,122.104,218289,4
+0WtM2NBVQNNJLh6scP13H8,Calm Down (with Selena Gomez),Rema,calmdown(withselenagomez)rema,0.801,0.806,-5.206,1,0.0381,0.382,0.000669,0.802,106.999,239318,4
+3Ua0m0YmEjrMi9XErKcNiR,Like Crazy,Jimin,likecrazyjimin,0.629,0.733,-5.445,1,0.0419,0.0025,0,0.362,120.001,212241,4
+7FbrGaHYVDmfr7KoLIZnQ7,Cupid - Twin Ver.,FIFTY FIFTY,cupid-twinver.fiftyfifty,0.783,0.592,-8.332,0,0.0331,0.435,4.15E-06,0.726,120.018,174253,4
+2mpoNBkngUEwnaKoBhZ0vl,PRC,Peso Pluma,prcpesopluma,0.784,0.826,-6.34,0,0.0538,0.0965,7.09E-05,0.893,138.078,184066,3
+1lRtH4FszTrwwlK5gTSbXO,AMG,Natanael Cano,amgnatanaelcano,0.772,0.73,-6.657,0,0.0972,0.152,0.000107,0.786,136.175,174943,3
+0V3wPSX9ygBnCm8psDIegu,Anti-Hero,Taylor Swift,anti-herotaylorswift,0.637,0.643,-6.571,1,0.0519,0.13,1.80E-06,0.533,97.008,200690,4
+2LBqCSwhJGcFQeTHMVGwy3,Die For You,The Weeknd,dieforyoutheweeknd,0.586,0.525,-7.163,0,0.0615,0.111,0,0.508,133.629,260253,4
+0NZPBYD5qbEWRs3PrGiRkT,Unholy (feat. Kim Petras),Sam Smith,unholy(feat.kimpetras)samsmith,0.712,0.463,-7.399,1,0.0797,0.011,2.96E-06,0.206,131.199,156943,4
+0u8rZGtXJrLtiSe34FPjGG,Like Crazy (English Version),Jimin,likecrazy(englishversion)jimin,0.623,0.755,-5.386,1,0.0415,0.00306,0,0.32,119.957,212254,4
+7K3BhSpAxZBznislvUMVtn,Last Night,Morgan Wallen,lastnightmorganwallen,0.492,0.675,-5.456,1,0.0389,0.467,0,0.478,203.759,163855,4
+3tt9i3Hhzq84dPS8H7iSiJ,La Bachata,Manuel Turizo,labachatamanuelturizo,0.835,0.679,-5.329,0,0.0364,0.583,1.98E-06,0.85,124.98,162638,4
+78Sw5GDo6AlGwTwanjXbGh,Here With Me,d4vd,herewithmed4vd,0.574,0.469,-8.209,1,0.0254,0.534,9.21E-05,0.288,132.023,242485,4
+4uUG5RXrOk84mYEfFvj3cK,I'm Good (Blue),David Guetta,i'mgood(blue)davidguetta,0.561,0.965,-3.673,0,0.0343,0.00383,7.07E-06,0.304,128.04,175238,4
+0PB0O24JqAuNdOAFVJljMS,Coco Chanel,Eladio Carrion,cocochaneleladiocarrion,0.683,0.764,-5.995,1,0.0441,0.0427,0,0.137,149.949,160325,4
+1zsPaEkglFvxjAhrM8yhpr,Hey Mor,Ozuna,heymorozuna,0.901,0.589,-6.713,0,0.289,0.00302,0.000237,0.399,98.002,196600,4
+1haJsMtoBhHfvuM7XWuT3W,El Azul,Junior H,elazuljuniorh,0.558,0.648,-7.081,0,0.055,0.226,7.76E-06,0.844,143.876,187226,3
+5XeFesFbtLpXzIVDNQP22n,I Wanna Be Yours,Arctic Monkeys,iwannabeyoursarcticmonkeys,0.464,0.417,-9.345,0,0.0256,0.136,0.022,0.479,67.528,183956,4
+1Y3LN4zO1Edc2EluIoSPJN,Until I Found You (with Em Beihold) - Em Beihold Version,Stephen Sanchez,untilifoundyou(withembeihold)-embeiholdversionstephensanchez,0.551,0.55,-5.339,1,0.0286,0.777,0,0.342,101.19,176440,3
+5odlY52u43F5BjByhxg7wg,golden hour,JVKE,goldenhourjvke,0.515,0.593,-4.801,1,0.0322,0.653,0.162,0.153,94.467,209260,3
+7MXVkk9YMctZqd1Srtv4MB,Starboy,The Weeknd,starboytheweeknd,0.679,0.587,-7.015,1,0.276,0.141,6.35E-06,0.486,186.003,230453,4
+7jtQIBanIiJOMS6RyCx6jZ,Another Love,Tom Odell,anotherlovetomodell,0.442,0.538,-8.55,0,0.0451,0.717,2.95E-05,0.139,122.758,244360,4
+65FftemJ1DbbZ45DUfHJXE,OMG,NewJeans,omgnewjeans,0.804,0.771,-4.067,0,0.0433,0.357,3.07E-06,0.739,126.956,212253,4
+2tTmW7RDtMQtBk7m2rYeSw,"Quevedo: Bzrp Music Sessions, Vol. 52",Bizarrap,"quevedo:bzrpmusicsessions,vol.52bizarrap",0.621,0.782,-5.548,1,0.044,0.0125,0.033,0.55,128.033,198938,4
+4fYte8ZvTK14NEhAOZocBi,I Ain't Worried,OneRepublic,iain'tworriedonerepublic,0.697,0.802,-6.412,1,0.0456,0.0988,3.55E-05,0.822,139.951,148120,4
+5mHdCZtVyb4DcJw8799hZp,Escapism.,RAYE,escapism.raye,0.538,0.742,-5.355,1,0.114,0.138,4.67E-05,0.25,96.107,272373,4
+7cQ0LAxT5HHCLGbxcjaxac,"Arcángel: Bzrp Music Sessions, Vol. 54",Bizarrap,"arcángel:bzrpmusicsessions,vol.54bizarrap",0.716,0.78,-3.495,0,0.297,0.55,0,0.786,123.856,228387,4
+6UN73IYd0hZxLi8wFPMQij,Players,Coi Leray,playerscoileray,0.954,0.516,-5.817,1,0.16,0.03,7.54E-06,0.624,105.001,139560,4
+561jH07mF1jHuk7KlaeF0s,Mockingbird,Eminem,mockingbirdeminem,0.637,0.678,-3.798,1,0.266,0.209,0,0.254,84.039,250760,4
+3kf0WdFOalKWBkCCLJo4mA,El Gordo Trae El Mando,Chino Pacas,elgordotraeelmandochinopacas,0.736,0.8,-5.38,0,0.0525,0.179,0,0.961,140.253,112087,3
+2CeKVsFFXG4QzA415QygGb,Feliz Cumpleaños Ferxxo,Feid,felizcumpleañosferxxofeid,0.865,0.573,-5.501,1,0.0678,0.0863,0,0.563,94.999,155960,4
+2mnXxnrX5vCGolNkaFvVeM,La Jumpa,Arcángel,lajumpaarcángel,0.887,0.234,-14.52,1,0.178,0.111,0.67,0.197,140.02,196800,4
+0UbesRsX2TtiCeamOIVEkp,Ch y la Pizza,Fuerza Regida,chylapizzafuerzaregida,0.628,0.668,-2.722,1,0.117,0.329,0,0.845,148.746,136913,3
+7MVIfkyzuUmQ716j8U7yGR,Rara Vez,Taiu,raraveztaiu,0.838,0.708,-4.668,0,0.166,0.176,0,0.96,119.984,128677,4
+59hBR0BCtJsfIbV9VzCVAp,Set Me Free Pt.2,Jimin,setmefreept.2jimin,0.585,0.815,-4.165,0,0.0565,0.115,0,0.564,132.09,200930,4
+4iZ4pt7kvcaH6Yo8UoZ4s2,Snooze,SZA,snoozesza,0.559,0.551,-7.231,1,0.132,0.141,0,0.392,143.008,201800,4
+54ipXppHLA8U4yqpOFTUhr,Bones,Imagine Dragons,bonesimaginedragons,0.772,0.75,-3.67,0,0.0455,0.0201,0,0.587,114.061,165265,4
+6TBzRwnX2oYd8aOrOuyK1p,Fin de Semana,Oscar Maydon,findesemanaoscarmaydon,0.699,0.541,-4.943,1,0.0826,0.0628,0,0.365,98.395,224921,4

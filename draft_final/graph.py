@@ -86,6 +86,7 @@ class Playlist:
             - self._song.isinstance(Track)
             - all(feature in self._song.features for feature in self._neighbours)
             - self._song.is_connected == {}
+            - len(user_preferences) == 11
         """
         songs_list = [Track(s) for s in songs]
         similarity_score = self._song.calc_similarity_score(songs_list, user_preferences)

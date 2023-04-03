@@ -1,0 +1,15 @@
+# CSC111 Winter 2023: Python libraries required for the project to run.
+
+# Testing and code checking
+python-ta~=2.4.2
+
+# Graphics and data visualization
+plotly>=5.8,<5.9
+pygame==2.1.3.dev8
+
+# Processing of spotify songs
+spotipy>=2.22.1
+
+# Graph visualization
+networkx>=3.0
+pyvis>=0.3.2

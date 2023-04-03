@@ -49,6 +49,11 @@ def get_tracks_features(track_ids: list[str]) -> list[dict[str, Any]]:
         track_features['track_name'] = track_info['name']
         track_features['track_artist'] = track_info['artists'][0]['name']
         track_features['track_id'] = track_features.pop('id')
+
+        title_and_artist = track_info['name'] + track_info['artists'][0]['name']
+        no_space = title_and_artist.replace(' ', '')
+        no_comma = no_space
+        track_features['title_and_artist'] = no_comma.lower()
         for feature in ['uri', 'track_href', 'analysis_url', 'liveness', 'type', 'key']:
             track_features.pop(feature)
 
@@ -62,7 +67,7 @@ def write_csv(playlists: list[str]) -> None:
     track_lst = get_songs_from_playlists(playlists)
     features = get_tracks_features(track_lst)
 
-    with open('hi_songs.csv', mode='w') as csvfile:
+    with open('small_dataset.csv', mode='w') as csvfile:
         fieldnames = features[0].keys()
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames, lineterminator='\n')
         writer.writeheader()

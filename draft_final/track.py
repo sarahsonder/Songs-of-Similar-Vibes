@@ -65,6 +65,7 @@ class Track:
         Preconditions:
             - all(0.0 <= preference <= 1.1 for preference in user_preferences)
             - self.is_connected == {}
+            - len(user_preferences) == 11
         """
         target = get_tracks_features([self.track_id])[0]
         similar_variables = ['danceability', 'speechiness', 'energy', 'acousticness', 'instrumentalness', 'valence']

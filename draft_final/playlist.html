@@ -269,37 +269,37 @@ function highlightFilter(filter) {
                                 
                                     <option value="Blue">Blue</option>
                                 
-                                    <option value="danceability">danceability</option>
-                                
-                                    <option value="acousticness">acousticness</option>
-                                
-                                    <option value="valence">valence</option>
-                                
-                                    <option value="mode">mode</option>
+                                    <option value="duration_ms">duration_ms</option>
                                 
                                     <option value="energy">energy</option>
                                 
-                                    <option value="time_signature">time_signature</option>
-                                
-                                    <option value="speechiness">speechiness</option>
-                                
-                                    <option value="instrumentalness">instrumentalness</option>
+                                    <option value="acousticness">acousticness</option>
                                 
                                     <option value="tempo">tempo</option>
                                 
                                     <option value="loudness">loudness</option>
                                 
-                                    <option value="duration_ms">duration_ms</option>
+                                    <option value="instrumentalness">instrumentalness</option>
+                                
+                                    <option value="mode">mode</option>
+                                
+                                    <option value="danceability">danceability</option>
+                                
+                                    <option value="valence">valence</option>
+                                
+                                    <option value="speechiness">speechiness</option>
+                                
+                                    <option value="time_signature">time_signature</option>
                                 
                                     <option value="howling">howling</option>
                                 
                                     <option value="Meant To Be">Meant To Be</option>
                                 
+                                    <option value="the end of the world">the end of the world</option>
+                                
                                     <option value="The Subway Song">The Subway Song</option>
                                 
                                     <option value="Big Black Car">Big Black Car</option>
-                                
-                                    <option value="the end of the world">the end of the world</option>
                                 
                             </select>
                         </div>
@@ -523,8 +523,8 @@ function highlightFilter(filter) {
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "#D5FF85", "id": "Blue", "label": "Blue", "level": 1, "shape": "dot", "size": 30, "title": "Blue"}, {"color": "#A1C1D2", "id": "danceability", "label": "danceability", "level": 2, "shape": "dot", "size": 19, "title": "danceability"}, {"color": "#A1C1D2", "id": "acousticness", "label": "acousticness", "level": 2, "shape": "dot", "size": 19, "title": "acousticness"}, {"color": "#A1C1D2", "id": "valence", "label": "valence", "level": 2, "shape": "dot", "size": 18, "title": "valence"}, {"color": "#A1C1D2", "id": "mode", "label": "mode", "level": 2, "shape": "dot", "size": 21, "title": "mode"}, {"color": "#A1C1D2", "id": "energy", "label": "energy", "level": 2, "shape": "dot", "size": 18, "title": "energy"}, {"color": "#A1C1D2", "id": "time_signature", "label": "time_signature", "level": 2, "shape": "dot", "size": 21, "title": "time_signature"}, {"color": "#A1C1D2", "id": "speechiness", "label": "speechiness", "level": 2, "shape": "dot", "size": 21, "title": "speechiness"}, {"color": "#A1C1D2", "id": "instrumentalness", "label": "instrumentalness", "level": 2, "shape": "dot", "size": 20, "title": "instrumentalness"}, {"color": "#A1C1D2", "id": "tempo", "label": "tempo", "level": 2, "shape": "dot", "size": 20, "title": "tempo"}, {"color": "#A1C1D2", "id": "loudness", "label": "loudness", "level": 2, "shape": "dot", "size": 21, "title": "loudness"}, {"color": "#A1C1D2", "id": "duration_ms", "label": "duration_ms", "level": 2, "shape": "dot", "size": 21, "title": "duration_ms"}, {"color": "#D2A1B7", "id": "howling", "label": "howling", "level": 3, "shape": "dot", "size": 10, "title": "howling"}, {"color": "#D2A1B7", "id": "Meant To Be", "label": "Meant To Be", "level": 3, "shape": "dot", "size": 10, "title": "Meant To Be"}, {"color": "#D2A1B7", "id": "The Subway Song", "label": "The Subway Song", "level": 3, "shape": "dot", "size": 10, "title": "The Subway Song"}, {"color": "#D2A1B7", "id": "Big Black Car", "label": "Big Black Car", "level": 3, "shape": "dot", "size": 10, "title": "Big Black Car"}, {"color": "#D2A1B7", "id": "the end of the world", "label": "the end of the world", "level": 3, "shape": "dot", "size": 10, "title": "the end of the world"}]);
-                  edges = new vis.DataSet([{"from": "Blue", "to": "danceability", "width": 1}, {"from": "Blue", "to": "acousticness", "width": 1}, {"from": "Blue", "to": "valence", "width": 1}, {"from": "Blue", "to": "mode", "width": 1}, {"from": "Blue", "to": "energy", "width": 1}, {"from": "Blue", "to": "time_signature", "width": 1}, {"from": "Blue", "to": "speechiness", "width": 1}, {"from": "Blue", "to": "instrumentalness", "width": 1}, {"from": "Blue", "to": "tempo", "width": 1}, {"from": "Blue", "to": "loudness", "width": 1}, {"from": "Blue", "to": "duration_ms", "width": 1}, {"from": "danceability", "to": "howling", "width": 1}, {"from": "danceability", "to": "Meant To Be", "width": 1}, {"from": "danceability", "to": "The Subway Song", "width": 1}, {"from": "howling", "to": "acousticness", "width": 1}, {"from": "howling", "to": "valence", "width": 1}, {"from": "howling", "to": "mode", "width": 1}, {"from": "howling", "to": "energy", "width": 1}, {"from": "howling", "to": "time_signature", "width": 1}, {"from": "howling", "to": "speechiness", "width": 1}, {"from": "howling", "to": "tempo", "width": 1}, {"from": "howling", "to": "loudness", "width": 1}, {"from": "howling", "to": "duration_ms", "width": 1}, {"from": "Meant To Be", "to": "acousticness", "width": 1}, {"from": "Meant To Be", "to": "mode", "width": 1}, {"from": "Meant To Be", "to": "time_signature", "width": 1}, {"from": "Meant To Be", "to": "speechiness", "width": 1}, {"from": "Meant To Be", "to": "instrumentalness", "width": 1}, {"from": "Meant To Be", "to": "loudness", "width": 1}, {"from": "Meant To Be", "to": "duration_ms", "width": 1}, {"from": "The Subway Song", "to": "mode", "width": 1}, {"from": "The Subway Song", "to": "time_signature", "width": 1}, {"from": "The Subway Song", "to": "speechiness", "width": 1}, {"from": "The Subway Song", "to": "instrumentalness", "width": 1}, {"from": "The Subway Song", "to": "tempo", "width": 1}, {"from": "The Subway Song", "to": "loudness", "width": 1}, {"from": "The Subway Song", "to": "duration_ms", "width": 1}, {"from": "acousticness", "to": "Big Black Car", "width": 1}, {"from": "Big Black Car", "to": "mode", "width": 1}, {"from": "Big Black Car", "to": "time_signature", "width": 1}, {"from": "Big Black Car", "to": "speechiness", "width": 1}, {"from": "Big Black Car", "to": "instrumentalness", "width": 1}, {"from": "Big Black Car", "to": "tempo", "width": 1}, {"from": "Big Black Car", "to": "loudness", "width": 1}, {"from": "Big Black Car", "to": "duration_ms", "width": 1}, {"from": "valence", "to": "the end of the world", "width": 1}, {"from": "the end of the world", "to": "mode", "width": 1}, {"from": "the end of the world", "to": "energy", "width": 1}, {"from": "the end of the world", "to": "time_signature", "width": 1}, {"from": "the end of the world", "to": "speechiness", "width": 1}, {"from": "the end of the world", "to": "instrumentalness", "width": 1}, {"from": "the end of the world", "to": "tempo", "width": 1}, {"from": "the end of the world", "to": "loudness", "width": 1}, {"from": "the end of the world", "to": "duration_ms", "width": 1}]);
+                  nodes = new vis.DataSet([{"color": "#D5FF85", "id": "Blue", "label": "Blue", "level": 1, "shape": "dot", "size": 30, "title": "Blue"}, {"color": "#A1C1D2", "id": "duration_ms", "label": "duration_ms", "level": 2, "shape": "dot", "size": 21, "title": "duration_ms"}, {"color": "#A1C1D2", "id": "energy", "label": "energy", "level": 2, "shape": "dot", "size": 18, "title": "energy"}, {"color": "#A1C1D2", "id": "acousticness", "label": "acousticness", "level": 2, "shape": "dot", "size": 19, "title": "acousticness"}, {"color": "#A1C1D2", "id": "tempo", "label": "tempo", "level": 2, "shape": "dot", "size": 20, "title": "tempo"}, {"color": "#A1C1D2", "id": "loudness", "label": "loudness", "level": 2, "shape": "dot", "size": 21, "title": "loudness"}, {"color": "#A1C1D2", "id": "instrumentalness", "label": "instrumentalness", "level": 2, "shape": "dot", "size": 20, "title": "instrumentalness"}, {"color": "#A1C1D2", "id": "mode", "label": "mode", "level": 2, "shape": "dot", "size": 21, "title": "mode"}, {"color": "#A1C1D2", "id": "danceability", "label": "danceability", "level": 2, "shape": "dot", "size": 19, "title": "danceability"}, {"color": "#A1C1D2", "id": "valence", "label": "valence", "level": 2, "shape": "dot", "size": 18, "title": "valence"}, {"color": "#A1C1D2", "id": "speechiness", "label": "speechiness", "level": 2, "shape": "dot", "size": 21, "title": "speechiness"}, {"color": "#A1C1D2", "id": "time_signature", "label": "time_signature", "level": 2, "shape": "dot", "size": 21, "title": "time_signature"}, {"color": "#D2A1B7", "id": "howling", "label": "howling", "level": 3, "shape": "dot", "size": 10, "title": "howling"}, {"color": "#D2A1B7", "id": "Meant To Be", "label": "Meant To Be", "level": 3, "shape": "dot", "size": 10, "title": "Meant To Be"}, {"color": "#D2A1B7", "id": "the end of the world", "label": "the end of the world", "level": 3, "shape": "dot", "size": 10, "title": "the end of the world"}, {"color": "#D2A1B7", "id": "The Subway Song", "label": "The Subway Song", "level": 3, "shape": "dot", "size": 10, "title": "The Subway Song"}, {"color": "#D2A1B7", "id": "Big Black Car", "label": "Big Black Car", "level": 3, "shape": "dot", "size": 10, "title": "Big Black Car"}]);
+                  edges = new vis.DataSet([{"from": "Blue", "to": "duration_ms", "width": 1}, {"from": "Blue", "to": "energy", "width": 1}, {"from": "Blue", "to": "acousticness", "width": 1}, {"from": "Blue", "to": "tempo", "width": 1}, {"from": "Blue", "to": "loudness", "width": 1}, {"from": "Blue", "to": "instrumentalness", "width": 1}, {"from": "Blue", "to": "mode", "width": 1}, {"from": "Blue", "to": "danceability", "width": 1}, {"from": "Blue", "to": "valence", "width": 1}, {"from": "Blue", "to": "speechiness", "width": 1}, {"from": "Blue", "to": "time_signature", "width": 1}, {"from": "duration_ms", "to": "howling", "width": 1}, {"from": "duration_ms", "to": "Meant To Be", "width": 1}, {"from": "duration_ms", "to": "the end of the world", "width": 1}, {"from": "duration_ms", "to": "The Subway Song", "width": 1}, {"from": "duration_ms", "to": "Big Black Car", "width": 1}, {"from": "howling", "to": "energy", "width": 1}, {"from": "howling", "to": "acousticness", "width": 1}, {"from": "howling", "to": "tempo", "width": 1}, {"from": "howling", "to": "loudness", "width": 1}, {"from": "howling", "to": "mode", "width": 1}, {"from": "howling", "to": "danceability", "width": 1}, {"from": "howling", "to": "valence", "width": 1}, {"from": "howling", "to": "speechiness", "width": 1}, {"from": "howling", "to": "time_signature", "width": 1}, {"from": "Meant To Be", "to": "acousticness", "width": 1}, {"from": "Meant To Be", "to": "loudness", "width": 1}, {"from": "Meant To Be", "to": "instrumentalness", "width": 1}, {"from": "Meant To Be", "to": "mode", "width": 1}, {"from": "Meant To Be", "to": "danceability", "width": 1}, {"from": "Meant To Be", "to": "speechiness", "width": 1}, {"from": "Meant To Be", "to": "time_signature", "width": 1}, {"from": "the end of the world", "to": "energy", "width": 1}, {"from": "the end of the world", "to": "tempo", "width": 1}, {"from": "the end of the world", "to": "loudness", "width": 1}, {"from": "the end of the world", "to": "instrumentalness", "width": 1}, {"from": "the end of the world", "to": "mode", "width": 1}, {"from": "the end of the world", "to": "valence", "width": 1}, {"from": "the end of the world", "to": "speechiness", "width": 1}, {"from": "the end of the world", "to": "time_signature", "width": 1}, {"from": "The Subway Song", "to": "tempo", "width": 1}, {"from": "The Subway Song", "to": "loudness", "width": 1}, {"from": "The Subway Song", "to": "instrumentalness", "width": 1}, {"from": "The Subway Song", "to": "mode", "width": 1}, {"from": "The Subway Song", "to": "danceability", "width": 1}, {"from": "The Subway Song", "to": "speechiness", "width": 1}, {"from": "The Subway Song", "to": "time_signature", "width": 1}, {"from": "Big Black Car", "to": "acousticness", "width": 1}, {"from": "Big Black Car", "to": "tempo", "width": 1}, {"from": "Big Black Car", "to": "loudness", "width": 1}, {"from": "Big Black Car", "to": "instrumentalness", "width": 1}, {"from": "Big Black Car", "to": "mode", "width": 1}, {"from": "Big Black Car", "to": "speechiness", "width": 1}, {"from": "Big Black Car", "to": "time_signature", "width": 1}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
@@ -539,7 +539,8 @@ function highlightFilter(filter) {
     "configure": {
         "enabled": true,
         "filter": [
-            "edges"
+            "edges",
+            "physics"
         ]
     },
     "edges": {
